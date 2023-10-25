@@ -6,7 +6,6 @@ let enemies;
 let pathkey;
 let fX;
 let fY;
-let enemyToShoot;
 
 const STOPSIGN = ".";
 
@@ -26,7 +25,7 @@ function setButtonState(button, state) {
 class Game {
   constructor() {
     this.score = 50;
-    this.money = 200;
+    this.money = 20;
     this.turretPrice = 20;
     this.turrets = [];
     this.turrets = [new Turret(340, 300), new Turret(200, 150)]
@@ -115,20 +114,10 @@ function createEnemy() {
   enemies.push(newEnemy);
 }
 
-function targetEnemy() {
-  var enemiesAlive = enemies.filter((enemy) => enemy.alive);
-
-  if (enemiesAlive.length == 0) return;
-  var enemyToShoot = enemiesAlive[0];
-  return enemyToShoot;
-}
 
 function draw() {
   background(200, 220);
   path.draw();
-
-  enemyToShoot = targetEnemy();
-
 
   enemies.map((enemy) => {
     enemy.draw();
