@@ -98,8 +98,6 @@ function setup() {
 
 function preload() {
   img = loadImage("sprites/turret.png");
-  // img = loadImage("sprites/download.jpeg")
-  // img2 = loadImage("sprites/bullet.png");
   imgFire = loadImage("sprites/fire.svg");
 }
 
@@ -108,7 +106,6 @@ function mouseClicked() {
 }
 
 function createEnemy() {
-  print("Creating enemy");
   var newEnemy = new Enemy(path.x, path.y);
   newEnemy.setDirections(pathKey);
   enemies.push(newEnemy);
