@@ -101,7 +101,7 @@ function preload() {
   img = loadImage("sprites/turret.png");
   // img = loadImage("sprites/download.jpeg")
   // img2 = loadImage("sprites/bullet.png");
-  imgFire = loadImage("/sprites/fire.svg");
+  imgFire = loadImage("sprites/fire.svg");
 }
 
 function mouseClicked() {
