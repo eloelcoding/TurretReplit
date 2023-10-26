@@ -28,14 +28,14 @@ class Game {
   constructor() {
     this.score = 50;
     this.money = 20;
-    this.turretPrice = 20;
+    this.turretPrice = 40;
     this.turrets = [];
     this.turrets = [new Turret(340, 300), new Turret(200, 150)]
 
   }
   buyTurret() {
     // for(let i = 0; i = 100; i++);
-    if (this.money >= 20) {
+    if (this.money >= this.turretPrice) {
       setButtonState(button, false);
       setTimeout(() => {
         this.nextTurret = new Turret();
