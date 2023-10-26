@@ -97,7 +97,7 @@ function setup() {
   button.size(150, 50);
   button.mousePressed(() => game.buyTurret());
   slider = createSlider(1, 9, 1); // (min, max, default)
-  slider.position(200, height+10);
+  slider.position(200, height + 10);
 }
 
 function preload() {
@@ -121,7 +121,7 @@ function draw() {
   path.draw();
 
   val = slider.value();
-  
+
   enemies.map((enemy) => {
     enemy.draw();
     enemy.move();
