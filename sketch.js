@@ -6,6 +6,8 @@ let enemies;
 let pathkey;
 let fX;
 let fY;
+let slider;
+let val = 1
 
 const STOPSIGN = ".";
 
@@ -94,6 +96,8 @@ function setup() {
   button.position(10, height + 10);
   button.size(150, 50);
   button.mousePressed(() => game.buyTurret());
+  slider = createSlider(1, 9, 1); // (min, max, default)
+  slider.position(200, height+10);
 }
 
 function preload() {
@@ -106,7 +110,7 @@ function mouseClicked() {
 }
 
 function createEnemy() {
-  var newEnemy = new Enemy(path.x, path.y);
+  var newEnemy = new Enemy(path.x, path.y, val);
   newEnemy.setDirections(pathKey);
   enemies.push(newEnemy);
 }
@@ -116,17 +120,12 @@ function draw() {
   background(200, 220);
   path.draw();
 
+  val = slider.value();
+  
   enemies.map((enemy) => {
     enemy.draw();
     enemy.move();
   });
 
   game.draw();
-
-  // if(turret.shoots()!=false){ push()
-
-  // translate(fX,fY)
-  // rotate(angleToMob+PI/2)
-  //  image(imgFire,0,0,100,60)
-  // pop() }
 }
