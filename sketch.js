@@ -108,20 +108,23 @@ function preload() {
 function mouseClicked() {
   game.mousePlace();
 
+  var found = false;
   for (let i = 0; i < game.turrets.length; i++) {
     let turret = game.turrets[i];
-    turret.select = false
-    if (dist(mouseX, mouseY, turret.x, turret.y) < 30) {
+
+    if (!found && dist(mouseX, mouseY, turret.x, turret.y) < 30) {
       // for (let i = 0; i < game.turrets.length; i++) {
       //   let turret = game.turrets[i];
       //   turret.select = false
       // }
+      found = true;
       console.log('Turret clicked!');
       turret.select = !turret.select //toggle
-      break;
     }
+    else
+      turret.select = false
 
-  }  
+  }
 }
 
 function createEnemy() {
