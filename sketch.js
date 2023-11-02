@@ -107,14 +107,20 @@ function preload() {
 
 function mouseClicked() {
   game.mousePlace();
+
   for (let i = 0; i < game.turrets.length; i++) {
     let turret = game.turrets[i];
+    turret.select = false
     if (dist(mouseX, mouseY, turret.x, turret.y) < 30) {
-      // Turret clicked, perform desired actions here
+      // for (let i = 0; i < game.turrets.length; i++) {
+      //   let turret = game.turrets[i];
+      //   turret.select = false
+      // }
       console.log('Turret clicked!');
       turret.select = !turret.select //toggle
       break;
     }
+
   }  
 }
 
