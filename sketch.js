@@ -112,14 +112,8 @@ function mouseClicked() {
   for (let i = 0; i < game.turrets.length; i++) {
     let turret = game.turrets[i];
 
-    if (!found && dist(mouseX, mouseY, turret.x, turret.y) < 30) {
-      // for (let i = 0; i < game.turrets.length; i++) {
-      //   let turret = game.turrets[i];
-      //   turret.select = false
-      // }
-      found = true;
-      console.log('Turret clicked!');
-      turret.select = !turret.select //toggle
+    if (!found) {
+      found = turret.selection();
     }
     else
       turret.select = false
