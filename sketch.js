@@ -26,7 +26,7 @@ function setButtonState(button, state) {
 
 class Game {
   constructor() {
-    this.score = 50;
+    this.score = 100;
     this.money = 20;
     this.turretPrice = 40;
     this.turrets = [];
