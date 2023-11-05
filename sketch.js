@@ -1,5 +1,6 @@
 let img;
 let img2;
+let images = {}
 let sounds = {}
 let rotationAngle = 0;
 let game;
@@ -102,8 +103,9 @@ function setup() {
 }
 
 function preload() {
-  img = loadImage("sprites/turret.png");
-  imgFire = loadImage("sprites/fire.svg");
+  var imageNames = ["cannon", "fire", "turret", "twinGun"];
+  imageNames.map(img => images[img] = loadImage(`sprites/${img}.svg`));
+
   sounds.canon = loadSound("assets/sounds/distant-cannon-fire-simulated-36464.mp3")
 }
 
