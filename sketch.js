@@ -1,7 +1,3 @@
-let img;
-let img2;
-let images = {}
-let sounds = {}
 let rotationAngle = 0;
 let game;
 let enemies;
@@ -28,9 +24,9 @@ function setButtonState(button, state) {
 class Game {
   constructor() {
     this.score = 100;
-    this.money = 20;
+    this.money = 200;
     this.turretPrice = 40;
-    this.turrets = [new Turret(340, 300), new Turret(200, 150)]
+    this.turrets = [new Turret(340, 300)]//, new Turret(200, 150)]
 
   }
   buyTurret() {
@@ -104,14 +100,7 @@ function setup() {
 }
 
 function preload() {
-  Object.keys(config.images).map(name => {
-    images[name] = loadImage(config.images[name])
-  })
-
-  Object.keys(config.sounds).map(name => {
-    sounds[name] = loadSound(config.sounds[name])
-  })
-
+  config.preload();
 }
 
 function mouseClicked() {
