@@ -5,7 +5,6 @@ let sounds = {}
 let rotationAngle = 0;
 let game;
 let enemies;
-let pathkey;
 let fX;
 let fY;
 let slider;
@@ -31,7 +30,6 @@ class Game {
     this.score = 100;
     this.money = 20;
     this.turretPrice = 40;
-    this.turrets = [];
     this.turrets = [new Turret(340, 300), new Turret(200, 150)]
 
   }
@@ -83,8 +81,8 @@ function setup() {
   createCanvas(660, 550);
   imageMode(CENTER);
   rectMode(CENTER);
-  pathKey = "RRUUUUUUURRRRDDDDRRRRUUUUUUURRRRDDDDDDDDRR";
-  path = new Path(pathKey, 20, 500, 40);
+  var pathConfig = config.path;
+  path = new Path(pathConfig.key, pathConfig.x, pathConfig.y, pathConfig.size);
   hits = 0;
   enemies = [];
   game = new Game();
@@ -100,13 +98,20 @@ function setup() {
   button.mousePressed(() => game.buyTurret());
   slider = createSlider(1, 9, 1); // (min, max, default)
   slider.position(200, height + 10);
+
+  config.addButtons()
+
 }
 
 function preload() {
-  var imageNames = ["cannon", "fire", "turret", "twinGun"];
-  imageNames.map(img => images[img] = loadImage(`sprites/${img}.svg`));
+  Object.keys(config.images).map(name => {
+    images[name] = loadImage(config.images[name])
+  })
 
-  sounds.canon = loadSound("assets/sounds/distant-cannon-fire-simulated-36464.mp3")
+  Object.keys(config.sounds).map(name => {
+    sounds[name] = loadSound(config.sounds[name])
+  })
+
 }
 
 function mouseClicked() {
@@ -127,7 +132,7 @@ function mouseClicked() {
 
 function createEnemy() {
   var newEnemy = new Enemy(path.x, path.y, val);
-  newEnemy.setDirections(pathKey);
+  newEnemy.setDirections(config.path.key);
   enemies.push(newEnemy);
 }
 
