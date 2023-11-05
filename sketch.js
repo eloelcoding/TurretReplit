@@ -4,7 +4,7 @@ let enemies;
 let fX;
 let fY;
 let slider;
-let val = 1
+let enemyHealth = 5;
 
 const STOPSIGN = ".";
 
@@ -26,8 +26,13 @@ class Game {
     this.score = 100;
     this.money = 200;
     this.turretPrice = 40;
-    this.turrets = [new Turret(340, 300)]//, new Turret(200, 150)]
+    this.turrets = [
+      new Turret(40, 400),
+      new Turret(340, 280),
+      new Turret(200, 150),
+    ]
 
+    this.shop = new Shop(false);
   }
   buyTurret() {
     // for(let i = 0; i = 100; i++);
@@ -70,11 +75,12 @@ class Game {
       this.nextTurret.y = mouseY;
       this.nextTurret.draw();
     }
+    this.shop.draw();
   }
 }
 
 function setup() {
-  createCanvas(660, 550);
+  createCanvas(750, 550);
   imageMode(CENTER);
   rectMode(CENTER);
   var pathConfig = config.path;
@@ -92,11 +98,21 @@ function setup() {
   button.position(10, height + 10);
   button.size(150, 50);
   button.mousePressed(() => game.buyTurret());
-  slider = createSlider(1, 9, 1); // (min, max, default)
+  slider = createSlider(1, 9, enemyHealth); // (min, max, default)
   slider.position(200, height + 10);
 
+  var toggleShopButton = createCheckbox("Toggle shop");
+  toggleShopButton.position(500, height + 10);
+  toggleShopButton.size(150, 50);
+  toggleShopButton.mousePressed(() => {
+    game.shop.toggle();
+    toggleShopButton = !toggleShopButton;
+  });
+
+  
   config.addButtons()
 
+  config.playSound("war", 0.3, true)
 }
 
 function preload() {
@@ -120,7 +136,7 @@ function mouseClicked() {
 }
 
 function createEnemy() {
-  var newEnemy = new Enemy(path.x, path.y, val);
+  var newEnemy = new Enemy(path.x, path.y, enemyHealth);
   newEnemy.setDirections(config.path.key);
   enemies.push(newEnemy);
 }
@@ -130,7 +146,7 @@ function draw() {
   background(200, 220);
   path.draw();
 
-  val = slider.value();
+  enemyHealth = slider.value();
 
   enemies.map((enemy) => {
     enemy.draw();
