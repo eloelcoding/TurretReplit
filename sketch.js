@@ -1,5 +1,6 @@
 let img;
 let img2;
+let sounds = {}
 let rotationAngle = 0;
 let game;
 let enemies;
@@ -103,6 +104,7 @@ function setup() {
 function preload() {
   img = loadImage("sprites/turret.png");
   imgFire = loadImage("sprites/fire.svg");
+  sounds.canon = loadSound("assets/sounds/distant-cannon-fire-simulated-36464.mp3")
 }
 
 function mouseClicked() {
