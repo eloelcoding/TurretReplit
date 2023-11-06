@@ -24,7 +24,7 @@ function setButtonState(button, state) {
 class Game {
   constructor() {
     this.score = 100;
-    this.money = 200;
+    this.money = 100;
     this.turretPrice = 40;
     this.turrets = [
       new Turret(40, 400),
@@ -65,9 +65,11 @@ class Game {
 
   draw() {
     this.turrets.map((turret) => turret.draw());
-    text(this.score + "♡", 20, 50);
+    push()
     textSize(40);
+    text(this.score + "♡", 20, 50);
     text(this.money + " bucks", 400, 50);
+    pop()
     if (this.nextTurret) { // nextTurret is defined
       print(this.nextTurret)
       print(this.nextTurret.active)
