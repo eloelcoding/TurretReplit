@@ -27,9 +27,8 @@ class Game {
     this.money = 100;
     this.turretPrice = 40;
     this.turrets = [
-      new Turret(40, 400),
-      new Turret(340, 280),
-      new Turret(200, 150),
+      new Turret(220, 250),
+      new Turret(560, 400)
     ]
 
     this.shop = new Shop(false);
