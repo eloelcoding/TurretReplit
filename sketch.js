@@ -67,7 +67,7 @@ class Game {
     push()
     textSize(40);
     text(this.score + "♡", 20, 50);
-    text(this.money + " bucks", 400, 50);
+    text(this.money + " bucks", 330, 120);
     pop()
     if (this.nextTurret) { // nextTurret is defined
       print(this.nextTurret)
@@ -100,7 +100,11 @@ function setup() {
   button.size(150, 50);
   button.mousePressed(() => game.buyTurret());
   slider = createSlider(1, 9, enemyHealth); // (min, max, default)
-  slider.position(200, height + 10);
+  slider.position(170, height + 10);
+
+  upgradeHere = createButton("upgrade button here");
+  upgradeHere.position(310, height + 10);
+  upgradeHere.size(150, 50);
 
   var toggleShopButton = createCheckbox("Toggle shop");
   toggleShopButton.position(500, height + 10);
@@ -110,9 +114,7 @@ function setup() {
     toggleShopButton = !toggleShopButton;
   });
 
-  
   config.addButtons()
-
   config.playSound("war", 0.3, true)
 }
 
