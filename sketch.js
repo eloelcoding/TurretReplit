@@ -105,6 +105,7 @@ function setup() {
   upgradeHere = createButton("upgrade button here");
   upgradeHere.position(310, height + 10);
   upgradeHere.size(150, 50);
+  upgradeHere.attribute('disabled', true); // Disable the button
 
   var toggleShopButton = createCheckbox("Toggle shop");
   toggleShopButton.position(500, height + 10);
