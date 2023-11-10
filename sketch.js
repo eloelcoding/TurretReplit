@@ -99,7 +99,7 @@ function setup() {
   button.position(10, height + 10);
   button.size(150, 50);
   button.mousePressed(() => game.buyTurret());
-  slider = createSlider(1, 9, enemyHealth); // (min, max, default)
+  slider = createSlider(1, 20, enemyHealth); // (min, max, default)
   slider.position(170, height + 10);
 
   upgradeHere = createButton("upgrade button here");
