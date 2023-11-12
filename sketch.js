@@ -33,13 +33,16 @@ class Game {
 
     this.shop = new Shop(false);
   }
-  buyTurret() {
+  buyTurret(turret) {
     // for(let i = 0; i = 100; i++);
     if (this.money >= this.turretPrice) {
       setButtonState(button, false);
       setTimeout(() => {
-        this.nextTurret = new Turret();
+        // this.nextTurret = new Turret();
+        // this.nextTurret.level = 
+        this.nextTurret = turret;
         this.nextTurret.active = false;
+
         setButtonState(button, true);
       }, 200)
 
@@ -78,7 +81,7 @@ class Game {
     }
     this.shop.draw();
 
-    
+
 
     if (config.showMousePosition) {
       textSize(40);
@@ -133,6 +136,9 @@ function preload() {
 }
 
 function mouseClicked() {
+
+  game.shop.mouseClicked();
+
   game.mousePlace();
 
   var found = false;
