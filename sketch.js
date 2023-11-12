@@ -77,6 +77,15 @@ class Game {
       this.nextTurret.draw();
     }
     this.shop.draw();
+
+    
+
+    if (config.showMousePosition) {
+      textSize(40);
+      text(mouseX, 350, 50);
+      text(mouseY, 450, 50);
+    }
+
   }
 }
 
