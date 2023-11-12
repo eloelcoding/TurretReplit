@@ -57,7 +57,7 @@ class Game {
   }
 
   takeHit(damage) {
-    this.score -= 1;
+    this.score -= damage;
   }
 
   gameOver() {
@@ -91,6 +91,8 @@ class Game {
 
   }
 }
+
+let turrets;
 
 function setup() {
   createCanvas(750, 550);
@@ -128,7 +130,7 @@ function setup() {
   });
 
   config.addButtons()
-  config.playSound("war", 0.3, true)
+  config.playSound("war", 0.3, true);
 }
 
 function preload() {
@@ -150,7 +152,6 @@ function mouseClicked() {
     }
     else
       turret.select = false
-
   }
 }
 
@@ -163,6 +164,7 @@ function createEnemy() {
 
 function draw() {
   background(200, 220);
+
   path.draw();
 
   enemyHealth = slider.value();
@@ -173,4 +175,4 @@ function draw() {
   });
 
   game.draw();
-}
+
