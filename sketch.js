@@ -25,35 +25,20 @@ class Game {
   constructor() {
     this.score = 100;
     this.money = 100;
-    this.turretPrice = 40;
     this.turrets = [
       new Turret(220, 250),
-      new Turret(560, 400)
+      new Cannon(360, 400)
     ]
 
     this.shop = new Shop(false);
   }
-  buyTurret(turret) {
-    // for(let i = 0; i = 100; i++);
-    if (this.money >= this.turretPrice) {
-      setButtonState(button, false);
-      setTimeout(() => {
-        // this.nextTurret = new Turret();
-        // this.nextTurret.level = 
-        this.nextTurret = turret;
-        this.nextTurret.active = false;
 
-        setButtonState(button, true);
-      }, 200)
-
-    }
-  }
   mousePlace() {
     if (!this.nextTurret) return;
     this.nextTurret.active = true;
     this.turrets.push(this.nextTurret);
+    this.money -= this.nextTurret.price;
     this.nextTurret = undefined;
-    this.money -= this.turretPrice;
   }
 
   takeHit(damage) {
@@ -92,8 +77,6 @@ class Game {
   }
 }
 
-let turrets;
-
 function setup() {
   createCanvas(750, 550);
   imageMode(CENTER);
@@ -109,10 +92,6 @@ function setup() {
   setInterval(createEnemy, 600);
 
   // turret = new Turret(340, 300);
-  button = createButton("Buy Turret= " + game.turretPrice + " bucks");
-  button.position(10, height + 10);
-  button.size(150, 50);
-  button.mousePressed(() => game.buyTurret());
   slider = createSlider(1, 20, enemyHealth); // (min, max, default)
   slider.position(170, height + 10);
 
@@ -176,3 +155,4 @@ function draw() {
 
   game.draw();
 
+}
