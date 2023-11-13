@@ -13,7 +13,7 @@ function setup() {
   imageMode(CENTER);
   rectMode(CENTER);
   var pathConfig = config.path;
-  path = new Path(pathConfig.key, pathConfig.x, pathConfig.y, pathConfig.size); // stalker
+  path = new Path(pathConfig.key, pathConfig.x, pathConfig.y, pathConfig.size);
   hits = 0;
   enemies = [];
   game = new Game();
@@ -47,10 +47,15 @@ function preload() {
   config.preload();
 }
 
+// the keyPressed didn't seem to ever be called
+function checkKeyPressed() {
+  console.log("Key pressed: " + key);
+  game.shop.keyPressed();
+}
+
 function mouseClicked() {
 
   game.shop.mouseClicked();
-
   game.mousePlace();
 
   var found = false;
@@ -73,6 +78,7 @@ function createEnemy() {
 
 
 function draw() {
+  checkKeyPressed()
   background(200, 220);
 
   path.draw();
