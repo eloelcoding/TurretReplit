@@ -8,6 +8,7 @@ const STOPSIGN = ".";
 
 
 function setup() {
+  cursor(HAND);
   createCanvas(750, 550);
   imageMode(CENTER);
   rectMode(CENTER);
