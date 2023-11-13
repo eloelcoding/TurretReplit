@@ -12,7 +12,7 @@ function setup() {
   imageMode(CENTER);
   rectMode(CENTER);
   var pathConfig = config.path;
-  path = new Path(pathConfig.key, pathConfig.x, pathConfig.y, pathConfig.size);
+  path = new Path(pathConfig.key, pathConfig.x, pathConfig.y, pathConfig.size); // stalker
   hits = 0;
   enemies = [];
   game = new Game();
