@@ -37,7 +37,10 @@ class Game {
     if (!this.nextTurret) return;
     this.nextTurret.active = true;
     this.turrets.push(this.nextTurret);
-    this.money -= this.nextTurret.price;
+    var target = this.money - this.nextTurret.price;
+    createjs.Tween.get(this)
+      .to({ money: target }, 250, createjs.Ease.getPowInOut(1))
+
     this.nextTurret = undefined;
   }
 
@@ -55,7 +58,7 @@ class Game {
     push()
     textSize(40);
     text(this.score + "♡", 20, 50);
-    text(this.money + " bucks", 330, 120);
+    // text(this.money + " bucks", 330, 120);
     pop()
     if (this.nextTurret) { // nextTurret is defined
       print(this.nextTurret)
