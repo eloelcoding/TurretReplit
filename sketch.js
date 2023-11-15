@@ -8,6 +8,7 @@ const STOPSIGN = ".";
 
 
 function setup() {
+  print(window.location)
   cursor(HAND);
   createCanvas(750, 550);
   imageMode(CENTER);
@@ -49,7 +50,6 @@ function preload() {
 
 // the keyPressed didn't seem to ever be called
 function checkKeyPressed() {
-  console.log("Key pressed: " + key);
   game.shop.keyPressed();
 }
 
