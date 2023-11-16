@@ -49,9 +49,6 @@ function preload() {
 }
 
 // the keyPressed didn't seem to ever be called
-function checkKeyPressed() {
-  game.shop.keyPressed();
-}
 
 function mouseClicked() {
 
@@ -76,9 +73,12 @@ function createEnemy() {
   enemies.push(newEnemy);
 }
 
+function keyTyped() {
+  game.keyTyped();
+}
 
 function draw() {
-  checkKeyPressed()
+
   background(200, 220);
 
   path.draw();
