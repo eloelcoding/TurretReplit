@@ -42,6 +42,8 @@ function setup() {
 
   config.addButtons()
   config.playSound("war", 0.3, true);
+  config.setFont(config.defaultFont)
+
 }
 
 function preload() {
@@ -74,12 +76,18 @@ function createEnemy() {
 }
 
 function keyTyped() {
+
   game.keyTyped();
+}
+
+function doubleClicked() {
+  game.doubleClicked();
 }
 
 function draw() {
 
   background(200, 220);
+
 
   path.draw();
 
@@ -91,5 +99,4 @@ function draw() {
   });
 
   game.draw();
-
 }
