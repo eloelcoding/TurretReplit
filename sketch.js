@@ -1,29 +1,8 @@
 let game;
-let enemies;
 let slider;
-let enemyHealth = 5;
 
-const STOPSIGN = ".";
-
-
-
-function setup() {
-  print(window.location)
-  cursor(HAND);
-  createCanvas(750, 550);
-  imageMode(CENTER);
-  rectMode(CENTER);
-  var pathConfig = config.path;
-  path = new Path(pathConfig.key, pathConfig.x, pathConfig.y, pathConfig.size);
-  hits = 0;
-  enemies = [];
-  game = new Game();
-  angleToMob = 0;
-
-  createEnemy();
-  setInterval(createEnemy, 600);
-
-  // turret = new Turret(340, 300);
+function createButtons() {
+  var enemyHealth = 5;
   slider = createSlider(1, 20, enemyHealth); // (min, max, default)
   slider.position(170, height + 10);
 
@@ -39,44 +18,38 @@ function setup() {
     game.shop.toggle();
     toggleShopButton = !toggleShopButton;
   });
-
-  config.addButtons()
-  config.playSound("war", 0.3, true);
-  config.setFont(config.defaultFont)
-
 }
 
 function preload() {
   config.preload();
 }
 
-// the keyPressed didn't seem to ever be called
+function setup() {
+  print(window.location)
+  cursor(HAND);
+  createCanvas(750, 550);
+  imageMode(CENTER);
+  rectMode(CENTER);
 
-function mouseClicked() {
+  var pathConfig = config.path;
+  path = new Path(pathConfig.key, pathConfig.x, pathConfig.y, pathConfig.size);
 
-  game.shop.mouseClicked();
-  game.mousePlace();
+  game = new Game(path);
+  game.startEnemyController();
 
-  var found = false;
-  for (let i = 0; i < game.turrets.length; i++) {
-    let turret = game.turrets[i];
-
-    if (!found) {
-      found = turret.selection();
-    }
-    else
-      turret.select = false
-  }
+  createButtons();
+  config.addButtons()
+  config.playSound("war", 0.3, true);
+  // config.setFont(config.defaultFont)
 }
 
-function createEnemy() {
-  var newEnemy = new Enemy(path.x, path.y, enemyHealth);
-  newEnemy.setDirections(config.path.key);
-  enemies.push(newEnemy);
+function mouseClicked() {
+  game.shop.mouseClicked();
+  game.mousePlace();
+  game.mouseClicked();
 }
 
 function keyTyped() {
-
   game.keyTyped();
 }
 
@@ -85,18 +58,7 @@ function doubleClicked() {
 }
 
 function draw() {
-
   background(200, 220);
-
-
-  path.draw();
-
-  enemyHealth = slider.value();
-
-  enemies.map((enemy) => {
-    enemy.draw();
-    enemy.move();
-  });
-
+  game.enemyController.setEnemyHealth(slider.value());
   game.draw();
 }
