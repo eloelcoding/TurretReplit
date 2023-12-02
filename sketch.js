@@ -5,19 +5,6 @@ function createButtons() {
   var enemyHealth = 5;
   slider = createSlider(1, 20, enemyHealth); // (min, max, default)
   slider.position(170, height + 10);
-
-  upgradeHere = createButton("upgrade button here");
-  upgradeHere.position(310, height + 10);
-  upgradeHere.size(150, 50);
-  upgradeHere.attribute('disabled', true); // Disable the button
-
-  var toggleShopButton = createCheckbox("Toggle shop");
-  toggleShopButton.position(500, height + 10);
-  toggleShopButton.size(150, 50);
-  toggleShopButton.mousePressed(() => {
-    game.shop.toggle();
-    toggleShopButton = !toggleShopButton;
-  });
 }
 
 function preload() {
@@ -27,7 +14,7 @@ function preload() {
 function setup() {
   print(window.location)
   cursor(HAND);
-  createCanvas(750, 550);
+  createCanvas(800, 550);
   imageMode(CENTER);
   rectMode(CENTER);
 
