@@ -1,10 +1,12 @@
 let game;
 let slider;
+let enemyHealth;
 
 function createButtons() {
-  var enemyHealth = 5;
-  slider = createSlider(1, 20, enemyHealth); // (min, max, default)
-  slider.position(170, height + 10);
+  enemyHealth = 4;
+  setInterval(() => {
+    enemyHealth *= 1.05;
+  }, 2500);
 }
 
 function preload() {
@@ -46,6 +48,6 @@ function doubleClicked() {
 
 function draw() {
   background(200, 220);
-  game.enemyController.setEnemyHealth(slider.value());
+  game.enemyController.setEnemyHealth(enemyHealth);
   game.draw();
 }
