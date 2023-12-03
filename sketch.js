@@ -5,7 +5,7 @@ let enemyHealth;
 function createButtons() {
   enemyHealth = 4;
   setInterval(() => {
-    enemyHealth *= 1.05;
+    enemyHealth *= 1.03;
   }, 2500);
 }
 
