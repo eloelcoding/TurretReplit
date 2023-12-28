@@ -4,9 +4,9 @@ let enemyHealth;
 
 function createButtons() {
   enemyHealth = 4;
-  setInterval(() => {
-    enemyHealth *= 1.03;
-  }, 2500);
+  // setInterval(() => {
+  //   enemyHealth *= 1.03;
+  // }, 2500);
 }
 
 function preload() {
