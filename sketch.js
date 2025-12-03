@@ -20,6 +20,9 @@ function setup() {
   imageMode(CENTER);
   rectMode(CENTER);
 
+  // Initialize effects manager
+  effectsManager = new EffectsManager();
+
   var pathConfig = config.path;
   path = new Path(pathConfig.key, pathConfig.x, pathConfig.y, pathConfig.size);
 
@@ -47,7 +50,11 @@ function doubleClicked() {
 }
 
 function draw() {
-  background(200, 220);
+  background(25, 28, 35);
   game.enemyController.setEnemyHealth(enemyHealth);
   game.draw();
+  
+  // Update and draw effects
+  effectsManager.update();
+  effectsManager.draw();
 }
