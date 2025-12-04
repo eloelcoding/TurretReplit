@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720">
+  <defs>
+    <filter id="shieldGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00ffaa" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#00aa88" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#008866" stop-opacity="0.4"/>
+    </linearGradient>
+    <radialGradient id="coreShield" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00ffcc"/>
+      <stop offset="70%" stop-color="#00aa88"/>
+      <stop offset="100%" stop-color="#006655"/>
+    </radialGradient>
+  </defs>
+  
+  <!-- Centered at 480, 360 with scale to fill similar to original Safe.png -->
+  <g transform="translate(480, 360)">
+    <!-- Outer shield ring -->
+    <circle cx="0" cy="0" r="280" fill="none" stroke="url(#shieldGrad)" stroke-width="8" filter="url(#shieldGlow)"/>
+    
+    <!-- Inner hexagon structure -->
+    <polygon points="0,-220 190,-110 190,110 0,220 -190,110 -190,-110" fill="#1a2a2a" stroke="#00aa88" stroke-width="4"/>
+    
+    <!-- Shield layers -->
+    <polygon points="0,-180 156,-90 156,90 0,180 -156,90 -156,-90" fill="#0a1a1a" stroke="#00ffaa" stroke-width="2" opacity="0.8"/>
+    
+    <!-- Central core -->
+    <circle cx="0" cy="0" r="120" fill="url(#coreShield)" filter="url(#shieldGlow)"/>
+    
+    <!-- Shield icon -->
+    <path d="M0,-80 L60,-40 L60,30 L0,80 L-60,30 L-60,-40 Z" fill="#00ffcc" opacity="0.9"/>
+    <path d="M0,-50 L35,-25 L35,15 L0,45 L-35,15 L-35,-25 Z" fill="#004433"/>
+    
+    <!-- Energy arcs -->
+    <path d="M-150,0 Q-100,-100 0,-100" fill="none" stroke="#00ffaa" stroke-width="3" opacity="0.6"/>
+    <path d="M150,0 Q100,100 0,100" fill="none" stroke="#00ffaa" stroke-width="3" opacity="0.6"/>
+    
+    <!-- Corner indicators -->
+    <circle cx="-190" cy="-110" r="12" fill="#00ffaa" opacity="0.7"/>
+    <circle cx="190" cy="-110" r="12" fill="#00ffaa" opacity="0.7"/>
+    <circle cx="-190" cy="110" r="12" fill="#00ffaa" opacity="0.7"/>
+    <circle cx="190" cy="110" r="12" fill="#00ffaa" opacity="0.7"/>
+    
+    <!-- Pulsing rings -->
+    <circle cx="0" cy="0" r="160" fill="none" stroke="#00ffaa" stroke-width="2" opacity="0.4"/>
+    <circle cx="0" cy="0" r="200" fill="none" stroke="#00ffaa" stroke-width="1" opacity="0.3"/>
+  </g>
+</svg>

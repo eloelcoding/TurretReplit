@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100">
+  <defs>
+    <!-- Enemy glow -->
+    <filter id="enemyGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <!-- Alien metal -->
+    <linearGradient id="alienMetal" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4a2a5a"/>
+      <stop offset="50%" stop-color="#6a3a7a"/>
+      <stop offset="100%" stop-color="#3a1a4a"/>
+    </linearGradient>
+    <!-- Eye glow -->
+    <radialGradient id="eyeGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff0044"/>
+      <stop offset="60%" stop-color="#cc0033"/>
+      <stop offset="100%" stop-color="#660022"/>
+    </radialGradient>
+  </defs>
+  
+  <!-- Small Scout Enemy (frame 0, centered at 50, 50) -->
+  <g transform="translate(50, 50)">
+    <!-- Body - angular alien ship -->
+    <polygon points="0,-30 38,-12 38,12 0,30 -38,12 -38,-12" fill="url(#alienMetal)" stroke="#aa44cc" stroke-width="2"/>
+    <!-- Central eye -->
+    <circle cx="0" cy="0" r="12" fill="url(#eyeGlow)" filter="url(#enemyGlow)"/>
+    <circle cx="0" cy="0" r="5" fill="#ffffff"/>
+    <!-- Wing accents -->
+    <line x1="-30" y1="0" x2="-42" y2="0" stroke="#ff0066" stroke-width="3" filter="url(#enemyGlow)"/>
+    <line x1="30" y1="0" x2="42" y2="0" stroke="#ff0066" stroke-width="3" filter="url(#enemyGlow)"/>
+  </g>
+  
+  <!-- Medium Fighter Enemy (frame 1, centered at 150, 50) -->
+  <g transform="translate(150, 50)">
+    <!-- Body -->
+    <polygon points="0,-35 42,-14 42,14 0,35 -42,14 -42,-14" fill="url(#alienMetal)" stroke="#aa44cc" stroke-width="3"/>
+    <!-- Armor plates -->
+    <polygon points="0,-25 28,-10 28,10 0,25 -28,10 -28,-10" fill="#2a1a3a" stroke="#6a3a8a" stroke-width="2"/>
+    <!-- Central eye -->
+    <circle cx="0" cy="0" r="14" fill="url(#eyeGlow)" filter="url(#enemyGlow)"/>
+    <circle cx="0" cy="0" r="6" fill="#ffffff"/>
+    <!-- Side thrusters -->
+    <rect x="-48" y="-5" width="10" height="10" fill="#ff0066" opacity="0.8" filter="url(#enemyGlow)"/>
+    <rect x="38" y="-5" width="10" height="10" fill="#ff0066" opacity="0.8" filter="url(#enemyGlow)"/>
+    <!-- Top/bottom accents -->
+    <circle cx="0" cy="-25" r="4" fill="#cc0066"/>
+    <circle cx="0" cy="25" r="4" fill="#cc0066"/>
+  </g>
+  
+  <!-- Large Destroyer Enemy (frame 2, centered at 250, 50) -->
+  <g transform="translate(250, 50)">
+    <!-- Outer shell -->
+    <polygon points="0,-42 48,-17 48,17 0,42 -48,17 -48,-17" fill="url(#alienMetal)" stroke="#cc66ee" stroke-width="3"/>
+    <!-- Mid layer -->
+    <polygon points="0,-32 36,-13 36,13 0,32 -36,13 -36,-13" fill="#3a2a4a" stroke="#8844aa" stroke-width="2"/>
+    <!-- Inner core -->
+    <polygon points="0,-20 22,-8 22,8 0,20 -22,8 -22,-8" fill="#1a0a2a" stroke="#6633aa" stroke-width="1"/>
+    <!-- Central eye - larger and more menacing -->
+    <circle cx="0" cy="0" r="16" fill="url(#eyeGlow)" filter="url(#enemyGlow)"/>
+    <circle cx="0" cy="0" r="7" fill="#ffffff"/>
+    <circle cx="-2" cy="-2" r="3" fill="#ff0044"/>
+    <!-- Multiple thrusters -->
+    <rect x="-54" y="-8" width="8" height="6" fill="#ff0066" filter="url(#enemyGlow)"/>
+    <rect x="-54" y="2" width="8" height="6" fill="#ff0066" filter="url(#enemyGlow)"/>
+    <rect x="46" y="-8" width="8" height="6" fill="#ff0066" filter="url(#enemyGlow)"/>
+    <rect x="46" y="2" width="8" height="6" fill="#ff0066" filter="url(#enemyGlow)"/>
+    <!-- Corner spikes -->
+    <polygon points="0,-42 5,-48 -5,-48" fill="#aa44cc"/>
+    <polygon points="0,42 5,48 -5,48" fill="#aa44cc"/>
+  </g>
+</svg>

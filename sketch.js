@@ -16,9 +16,19 @@ function preload() {
 function setup() {
   print(window.location)
   cursor(HAND);
-  createCanvas(800, 550);
+  createCanvas(windowWidth, windowHeight);
   imageMode(CENTER);
   rectMode(CENTER);
+  
+  // Set futuristic font
+  textFont('Orbitron');
+  
+  // Calculate global scale factor
+  config.updateScale();
+  config.setMap(config.currentMap);
+
+  // Initialize space background
+  spaceBackground = new SpaceBackground(windowWidth, windowHeight);
 
   // Initialize effects manager
   effectsManager = new EffectsManager();
@@ -31,8 +41,13 @@ function setup() {
 
   createButtons();
   config.addButtons()
-  config.playSound("war", 0.3, true);
-  // config.setFont(config.defaultFont)
+  config.playMusic("nexus", 0.3);
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+  config.updateScale();
+  spaceBackground = new SpaceBackground(windowWidth, windowHeight);
 }
 
 function mouseClicked() {
@@ -50,7 +65,9 @@ function doubleClicked() {
 }
 
 function draw() {
-  background(25, 28, 35);
+  // Draw space background with stars and nebulae
+  spaceBackground.draw();
+  
   game.enemyController.setEnemyHealth(enemyHealth);
   game.draw();
   
