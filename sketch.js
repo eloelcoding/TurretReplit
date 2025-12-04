@@ -1,12 +1,24 @@
 let game;
 let slider;
 let enemyHealth;
+let audioStarted = false;
 
 function createButtons() {
   enemyHealth = 4;
   // setInterval(() => {
   //   enemyHealth *= 1.03;
   // }, 2500);
+}
+
+// Start audio after first user interaction (browser autoplay policy)
+function initAudio() {
+  if (audioStarted) return;
+  audioStarted = true;
+  
+  // Start music if enabled
+  if (config.music) {
+    config.playMusic("nexus", 0.3);
+  }
 }
 
 function preload() {
@@ -40,8 +52,9 @@ function setup() {
   game.startEnemyController();
 
   createButtons();
-  config.addButtons()
-  config.playMusic("nexus", 0.3);
+  config.addButtons();
+  
+  // Note: Music will start on first user interaction due to browser autoplay policy
 }
 
 function windowResized() {
@@ -51,12 +64,14 @@ function windowResized() {
 }
 
 function mouseClicked() {
+  initAudio();  // Start audio on first click (browser autoplay policy)
   game.shop.mouseClicked();
   game.mousePlace();
   game.mouseClicked();
 }
 
 function keyTyped() {
+  initAudio();  // Start audio on first keypress (browser autoplay policy)
   game.keyTyped();
 }
 
