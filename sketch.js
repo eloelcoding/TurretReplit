@@ -15,9 +15,9 @@ function initAudio() {
   if (audioStarted) return;
   audioStarted = true;
   
-  // Start music if enabled
-  if (config.music) {
-    config.playMusic("nexus", 0.3);
+  // Start music if volume > 0
+  if (config.musicVolume > 0) {
+    config.playMusic("nexus");
   }
 }
 
