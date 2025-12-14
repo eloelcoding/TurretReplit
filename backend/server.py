@@ -24,6 +24,9 @@ app.mount("/", StaticFiles(directory=PROJECT_ROOT), name="static")
 
 # Run the server
 if __name__ == "__main__":
-    port = 3000
-    uvicorn.run("server:app", reload=True, host="0.0.0.0", port=port)
+    import os
+    port = int(os.getenv("PORT", 3000))
+    # Use reload=False in production/Docker, reload=True for development
+    reload = os.getenv("RELOAD", "false").lower() == "true"
+    uvicorn.run("server:app", reload=reload, host="0.0.0.0", port=port)
 
