@@ -1,5 +1,5 @@
 # Multi-stage build for Turret Defense game
-FROM python:3.11-slim as builder
+FROM python:3.12-slim as builder
 
 # Install Poetry (latest version that supports package-mode)
 RUN pip install --no-cache-dir poetry
@@ -17,12 +17,12 @@ RUN poetry config virtualenvs.create false
 RUN poetry install --only=main --no-interaction --no-ansi
 
 # Production stage
-FROM python:3.11-slim
+FROM python:3.12-slim
 
 WORKDIR /app
 
 # Copy installed packages from builder
-COPY --from=builder /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-packages
+COPY --from=builder /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
 COPY --from=builder /usr/local/bin /usr/local/bin
 
 # Copy application files
