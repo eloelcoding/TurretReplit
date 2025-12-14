@@ -6,11 +6,16 @@ authors = []
 package-mode = false
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.12"
 fastapi = "^0.100.0"
 uvicorn = "^0.22.0"
 numpy = "<2"
 scipy = "<1.12"
+
+[[tool.poetry.source]]
+name = "testpypi"
+url = "https://test.pypi.org/simple/"
+priority = "supplemental"
 
 [build-system]
 requires = ["poetry-core"]
