@@ -1,0 +1,17 @@
+[Unit]
+Description=Turret Defense Game Docker Container
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/home/joel/dev/TurretReplit
+ExecStart=/snap/bin/docker compose -f /home/joel/dev/TurretReplit/docker/docker-compose.yml up -d
+ExecStop=/snap/bin/docker compose -f /home/joel/dev/TurretReplit/docker/docker-compose.yml down
+TimeoutStartSec=0
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
