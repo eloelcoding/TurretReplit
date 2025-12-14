@@ -3,7 +3,37 @@
 
 <head>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js"></script>
+  <script>
+    // Load p5.sound after p5.js is ready, but before sketch code runs
+    // This prevents the addModule error
+    (function() {
+      function loadP5Sound() {
+        if (typeof p5 !== 'undefined' && p5.prototype && typeof p5.prototype.addModule === 'function') {
+          var script = document.createElement('script');
+          script.src = 'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js';
+          script.async = false;
+          document.head.appendChild(script);
+          return true;
+        }
+        return false;
+      }
+      
+      // Try to load immediately
+      if (!loadP5Sound()) {
+        // If p5.js isn't ready, wait for it
+        var checkInterval = setInterval(function() {
+          if (loadP5Sound()) {
+            clearInterval(checkInterval);
+          }
+        }, 10);
+        
+        // Fallback timeout
+        setTimeout(function() {
+          clearInterval(checkInterval);
+        }, 1000);
+      }
+    })();
+  </script>
   <script src="https://code.createjs.com/1.0.0/tweenjs.min.js"></script>
   <link rel="stylesheet" type="text/css" href="lib/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
