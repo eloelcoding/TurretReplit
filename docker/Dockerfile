@@ -19,6 +19,19 @@ RUN poetry install --only=main --no-interaction --no-ansi
 # Production stage
 FROM python:3.12-slim
 
+# Build arguments for versioning
+ARG VERSION
+ARG COMMIT_HASH
+ARG BUILD_DATE
+
+# Labels for image metadata
+LABEL org.opencontainers.image.title="Turret Defense"
+LABEL org.opencontainers.image.description="Turret Defense game backend and frontend"
+LABEL org.opencontainers.image.version="${VERSION}"
+LABEL org.opencontainers.image.revision="${COMMIT_HASH}"
+LABEL org.opencontainers.image.created="${BUILD_DATE}"
+LABEL org.opencontainers.image.vendor="Turret Defense"
+
 WORKDIR /app
 
 # Copy installed packages from builder

@@ -2,8 +2,8 @@
 name = "turretdefense-backend"
 version = "0.1.0"
 description = "Backend server for Turret Defense game"
-authors = []
-package-mode = false
+authors = ["Your Name <your.email@example.com>"]
+package-mode = true
 
 [tool.poetry.dependencies]
 python = "^3.12"
