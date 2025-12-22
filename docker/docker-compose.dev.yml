@@ -1,0 +1,31 @@
+services:
+  turret:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: turret-defense-dev
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    environment:
+      - PYTHONUNBUFFERED=1
+      - DEV_MODE=true
+      - RELOAD=true
+      - PORT=3000
+    # Mount source code as volumes for live development
+    volumes:
+      # Backend code - changes will trigger auto-reload
+      - ../backend:/app/backend:ro
+      # Frontend files - changes visible immediately
+      - ../index.html:/app/index.html:ro
+      - ../lib:/app/lib:ro
+      - ../sprites:/app/sprites:ro
+      - ../assets:/app/assets:ro
+      - ../sketch.js:/app/sketch.js:ro
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:3000/')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+

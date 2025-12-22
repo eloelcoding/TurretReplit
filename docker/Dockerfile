@@ -14,7 +14,8 @@ COPY backend/pyproject.toml backend/poetry.lock ./
 RUN poetry config virtualenvs.create false
 
 # Install dependencies (Poetry 2.x uses --only=main instead of --no-dev)
-RUN poetry install --only=main --no-interaction --no-ansi
+# Use --no-root to skip installing the current project (we copy source files directly)
+RUN poetry install --only=main --no-interaction --no-ansi --no-root
 
 # Production stage
 FROM python:3.12-slim
